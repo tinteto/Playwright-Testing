@@ -1,0 +1,18 @@
+{
+  "name": "01.-accordion",
+  "version": "1.0.0",
+  "type": "module",  
+  "description": "- инициализиране на проект - npm init -y\r - инсталиране на Playwright за Chrome - npm i --save-dev palywright-chromium\r - инсталиране на Mocha and Chai - npm i --save-dev mocha chai\r - стартиране на тестовете - node test.js / или името на файла, в който са тестовете\r - Note: both Rest service and web server are run before executing tests",
+  "main": "accordion.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "chai": "^5.2.0",
+    "mocha": "^11.7.1",
+    "playwright-chromium": "^1.53.2"
+  }
+}
