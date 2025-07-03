@@ -27,7 +27,15 @@ describe("E2E tests", async function () {
   });
 
   it('loads article titles', async () => {
-    await page.goto('http://localhost:60183');
-    await page.screenshot({ path: 'page.png' });
+    await page.goto('http://127.0.0.1:5500/01.%20Accordion/index.html');
+
+    await page.waitForSelector('.accordion div.head>span');
+
+    const content = await page.textContent('#main');
+
+    expect(content).to.contain('Scalable Vector Graphics');
+    expect(content).to.contain('Open standard');
+    expect(content).to.contain('Unix');
+    expect(content).to.contain('ALGOL');
   });
 });
