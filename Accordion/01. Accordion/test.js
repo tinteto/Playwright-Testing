@@ -50,4 +50,21 @@ describe("E2E tests", function () {
 
     expect(text).to.contain('Scalable Vector Graphics (SVG) is an Extensible Markup Language (XML)');
   });
+
+  it('"Less" button is working', async() => {
+    await page.goto('http://127.0.0.1:5500/01.%20Accordion/index.html');
+
+    await page.click('text=More');
+
+    await page.waitForSelector('.extra p');
+
+    const text = await page.textContent('.extra p');
+    let visible = await page.isVisible('.extra p');
+
+    expect(visible).to.be.true;
+
+    await page.click('text=Less');
+    visible = await page.isVisible('.extra p');
+    expect(visible).to.be.false;
+  })
 });
