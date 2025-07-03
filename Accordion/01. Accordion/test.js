@@ -6,12 +6,12 @@ import { after, afterEach, before, beforeEach, describe, it } from 'mocha';
 let browser;
 let page; //declare reusable variables
 
-describe("E2E tests", async function () {
+describe("E2E tests", function () {
     this.timeout(5000);
 
   //преди началото на тестването
   before(async () => {
-    browser = await chromium.launch({ headless: false});
+    browser = await chromium.launch({ headless: false });
   });
   //след края на тестването
   after(async () => {
@@ -37,5 +37,17 @@ describe("E2E tests", async function () {
     expect(content).to.contain('Open standard');
     expect(content).to.contain('Unix');
     expect(content).to.contain('ALGOL');
+  });
+
+  it('"More" button is working', async() => {
+    await page.goto('http://127.0.0.1:5500/01.%20Accordion/index.html');
+
+    await page.click('text=More');
+
+    await page.waitForSelector('.extra p');
+
+    const text = await page.textContent('.extra p');
+
+    expect(text).to.contain('Scalable Vector Graphics (SVG) is an Extensible Markup Language (XML)');
   });
 });
